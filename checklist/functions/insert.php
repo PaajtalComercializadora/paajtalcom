@@ -1,35 +1,29 @@
 <?php
-    function insertar_nuevo_cliente($params){
-	include '../conexion/conexion.php';
+    function insert_nueva_entrada($clave,$estatus){
+	include 'conexion/conexion.php';
 
-	        $NOM = $params['Nombre'];
-			$SOC = $params['Social'];
-			$RFC = $params['RFC'];
-			$DIR = $params['Direccion'];
-			$TEL = $params['Telefono'];
-			$COR = $params['Correo'];
-
-	    $sql = "INSERT INTO catclientes (ID_Empresa,Nombre,RazonSocial,RFC,Direccion,Telefono,Correo,FechaAlta,Estatus) 
-		VALUES (1,'".$NOM."','".$SOC."','".$RFC."','".$DIR."','".$TEL."','".$COR."',CURRENT_DATE,1)";
+	    $sql = "INSERT INTO checklist (nocol,status) 
+		VALUES ('".$clave."',".$estatus.")";
 		$result = $conectar->query($sql);
 		$ok = ($result) ? true : false;
 		$conectar->close();
-		$mensaje = ($ok) ? '<h1><span class="span8 label label-info col-lg-12">El cliente "'.$NOM.'" Se ha guardado Exitosamente</span></h1>' : '<h1><span class="span8 label label-danger col-lg-12">Error al guardar "'.$NOM.'"</span></h1>';
-		return $mensaje;
-     }
-     function insertar_nuevo_obra($params){
-	include '../conexion/conexion.php';
+		if ($estatus == 1) {
 
-	        $NOM = utf8_encode($params['Nombre']);
-			$DIR = $params['Direccion'];
-			$CLI = $params['Cliente'];
+			$mensaje = ($ok) ? 'Entrada guardada, Bienvenido' : 'Error al guardar';
+		}
+		if ($estatus == 2) {
+			$mensaje = ($ok) ? 'Salida guardada, Provecho' : 'Error al guardar';
 
-	    $sql = "INSERT INTO catobras (ID_Cliente,ID_Empresa,Nombre,Direccion,FechaAlta,Estatus) 
-		VALUES (".$CLI.",1,'".$NOM."','".$DIR."',CURRENT_DATE,1)";
-		$result = $conectar->query($sql);
-		$ok = ($result) ? true : false;
-		$conectar->close();
-		$mensaje = ($ok) ? '<h1><span class="span8 label label-info col-lg-12">El cliente "'.$NOM.'" Se ha guardado Exitosamente</span></h1>' : '<h1><span class="span8 label label-danger col-lg-12">Error al guardar "'.$NOM.'"</span></h1>';
+		}
+		if ($estatus == 3) {
+			$mensaje = ($ok) ? 'Entrada guardada, Bienvenido de nuevo' : 'Error al guardar';
+			
+		}
+		if ($estatus == 4) {
+			$mensaje = ($ok) ? 'Salida guardada, Buen Día' : 'Error al guardar';
+
+		}
+		
 		return $mensaje;
      }
 ?>

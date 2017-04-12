@@ -10,7 +10,7 @@ include 'functions/select.php';
 
 					if ($exist == 1) 
 					{
-					  $respuesta= "Este colaborador existe";
+					  $respuesta= insert_nueva_entrada($clave,$estatus);
 					}
 					else
 					{

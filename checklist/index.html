@@ -5,6 +5,8 @@
 	<title>Project Checklist</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" type="text/css" href="css/list.css">
+	<link rel="stylesheet" type="text/css" href="css/alertify.core.css">
+	<link rel="stylesheet" type="text/css" href="css/alertify.default.css">
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -45,7 +47,8 @@
 </div>
 </div>
 </body>
-<script type="text/javascript" src="js/jquery-3.2.0.min"></script>
+<script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="js/alertify.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
 
@@ -62,7 +65,7 @@
                 data : postData,
                 success:function(data, textStatus) 
                 {
-                    alert(data);
+                    alertify.alert(data);
                     $("#mensaje").html(data);
                     $("#frmAlta input").val('');
                     $("#tabla").load('catClientes/tabla.php');
