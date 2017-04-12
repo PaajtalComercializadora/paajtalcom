@@ -36,8 +36,8 @@
 					<option value="3">Entrada comida</option>
 					<option value="4">Salida</option>
 				</select><br>
-				<button class="btn" id="btnAddNew">Registrar</button>
 			</form>
+			<button class="btn" id="btnAddNew" onclick="envia();">Registrar</button>
 		
 	</div>
 		
@@ -62,7 +62,7 @@
                 data : postData,
                 success:function(data, textStatus) 
                 {
-                    //alert(data);
+                    alert(data);
                     $("#mensaje").html(data);
                     $("#frmAlta input").val('');
                     $("#tabla").load('catClientes/tabla.php');

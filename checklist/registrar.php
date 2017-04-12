@@ -1,25 +1,20 @@
 <?php
-include '../funciones/insert.php';
-include '../funciones/select.php';
+include 'functions/insert.php';
+include 'functions/select.php';
 
                 $respuesta='';
-				$datos = [
-				"Clave" => utf8_decode($_POST['clave']),
-				"Estatus" =>utf8_decode($_POST['social']),
-				"RFC" => utf8_decode($_POST['rfc']),
-				"Direccion" => utf8_decode($_POST['direccion']),
-				"Telefono" => intval($_POST['telefono']),
-				"Correo" => utf8_decode($_POST['correo']),
-					];
+				$clave = utf8_decode($_POST['clave']);
+				$estatus = $_POST['estatus'];
 
+					$exist = select_clave_existe($clave);
 
-					if ($modo == 1) 
+					if ($exist == 1) 
 					{
-					  $respuesta= actualizar_clientes($datos,$ID);
+					  $respuesta= "Este colaborador existe";
 					}
 					else
 					{
-                      $respuesta= insertar_nuevo_cliente($datos);
+                      $respuesta= "Este colaborador no existe";
 					}
 				
 				echo $respuesta;
