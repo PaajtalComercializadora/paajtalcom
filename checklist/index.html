@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Project Checklist</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" type="text/css" href="css/list.css">
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script text="text/javascript" src="script.js"></script>
+	<link rel="stylesheet" href="styles.css">
+	
+</head>
+<body style="background-image: url('img/importacion.jpg');background-size: 100%;">
+<div class="container-fluid">
+	<div class="container" style="background-color: #fff;margin-top: 10%;opacity: 0.9;">
+		<div class="col-lg-6" style="padding: 5%;margin-left: 16%;">
+		<img src="img/Logo-Original.png" style="width: 50%;">
+	</div>
+	<div class="col-lg-6" style="padding: 2%;margin-left: -26%;">
+	<div class="col-lg-12">
+		<p class="headertext">Bienvenido</p>
+	</div>
+	<div class="col-lg-12">
+	<form role="tabpanel" class="tab-pane active" id="new" method="POST">
+				<p class="newProdNameText">Clave de colaborador</p>
+				<input type="text" placeholder="Clave" name="clave" id="newProductName"><br>
+				<select class="" name="estatus" id="newProductName" style="margin-top: 10px;">
+					<option value="1">Entrada</option>
+					<option value="2">Salida comida</option>
+					<option value="3">Entrada comida</option>
+					<option value="4">Salida</option>
+				</select><br>
+				<button class="btn" id="btnAddNew">Registrar</button>
+			</form>
+		
+	</div>
+		
+	</div>
+</div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery-3.2.0.min"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+
+
+});
+
+	  function envia() {
+            var postData = $('#new').serializeArray();
+            var formURL = "registrar.php";
+            $.ajax({
+                url : formURL,
+                type: "POST",
+                async: false,
+                data : postData,
+                success:function(data, textStatus) 
+                {
+                    //alert(data);
+                    $("#mensaje").html(data);
+                    $("#frmAlta input").val('');
+                    $("#tabla").load('catClientes/tabla.php');
+                },
+                error: function(jqXHR, textStatus) 
+                {
+          //alert(textStatus);
+                    $("#mensaje").html(textStatus);
+                }
+            });
+          }
+
+</script>
+</html>
