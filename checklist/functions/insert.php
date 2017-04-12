@@ -12,7 +12,7 @@
 			$mensaje = ($ok) ? 'Entrada guardada, Bienvenido' : 'Error al guardar';
 		}
 		if ($estatus == 2) {
-			$mensaje = ($ok) ? 'Salida guardada, Provecho' : 'Error al guardar';
+			$mensaje = ($ok) ? 'Salida guardada, Disfruta tu comida' : 'Error al guardar';
 
 		}
 		if ($estatus == 3) {
@@ -20,7 +20,7 @@
 			
 		}
 		if ($estatus == 4) {
-			$mensaje = ($ok) ? 'Salida guardada, Buen Día' : 'Error al guardar';
+			$mensaje = ($ok) ? 'Salida guardada, Descansa' : 'Error al guardar';
 
 		}
 		
